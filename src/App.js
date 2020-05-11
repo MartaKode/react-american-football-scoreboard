@@ -13,7 +13,7 @@ function App() {
   const [awayScore, setAwayScore] = useState(0)
 
   // !!!!!!!Sprint !!!!!!!!!!!!!!!!!!!!!!!!
-  const [timerBoard, setTimerBoard] = useState(0)
+  const [seconds, setseconds] = useState(0)
   const [minutes, setMinutes] = useState(0)
   const [quarters, setQuarters] =useState(0)
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -45,18 +45,21 @@ function App() {
   }
   
   setTimeout(() => {
-    setTimerBoard(timerBoard + 1)
-    if(timerBoard === 60){
+    setseconds(seconds + 1)
+    if(seconds === 60){
 setMinutes(minutes + 1)
-setTimerBoard(0)
-    }else if(minutes > 15){
+setseconds(0)
+    }else if(minutes > 2){
       setMinutes(0)
-      setTimerBoard(0)
+      setseconds(0)
+      setQuarters(quarters+1)
+    }if(quarters>4){
+      setQuarters(0)
     }
 
     // if(quarters === 1){
     //   setMinutes(0)
-    //   setTimerBoard(0)
+    //   setseconds(0)
     // }
   }, 1000)
 
@@ -73,7 +76,7 @@ setTimerBoard(0)
             <div className="home__score">{homeScore}</div>
           </div>
           {/* !!!!!!!!!!!!!!!!!!Sprint */}
-  <div className="timer">`{minutes}:{timerBoard}`</div>
+  <div className="timer">`{minutes}:{seconds}`</div>
           {/* !!!!!!!!!!!!!!!!!!!!!! */}
           {/* <div className="timer">00:03</div> */}
           <div className="away">
